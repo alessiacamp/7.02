@@ -2,6 +2,7 @@ package org.example.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Table(name = "prenotazioni")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Prenotazione {
     @Id
     @GeneratedValue
@@ -31,11 +33,12 @@ public class Prenotazione {
     @JoinColumn(name = "codice_utente", nullable = false)
     private Utente utente;
 
-    public Prenotazione(LocalDate dataInizio, LocalDate dataFine, Postazione postazione, Utente utente) {
+    public Prenotazione(LocalDate dataInizio, Postazione postazione, Utente utente) {
         this.dataInizio = dataInizio;
-        this.dataFine = dataFine;
+        this.dataFine = dataInizio.plusDays(1) ;
         this.postazione = postazione;
         this.utente = utente;
+
     }
 
     @Override

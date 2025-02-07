@@ -2,6 +2,7 @@ package org.example.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Table(name = "postazioni")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Postazione {
     @Id
     @GeneratedValue
